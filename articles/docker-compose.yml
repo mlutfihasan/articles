@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  api:
+    restart: always
+    container_name: mf-micro-service-cogs-data
+    image: registry.gitlab.com/VNEU/mf-micro-service-cogs-data-data:${TAG}
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "1"
+        max-size: "1m"
+
+networks:
+  default:
+    external:
+      name: mf-micro-services
