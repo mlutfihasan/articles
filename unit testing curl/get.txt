@@ -1,0 +1,7 @@
+curl --location --request GET 'localhost:8080/articles' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "author":"Muhammad Lutfi Hasan",
+    "title":"Golang Developer",
+    "body":"Ini adalah artikel Golang Developer"
+}'
