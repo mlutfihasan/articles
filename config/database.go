@@ -12,7 +12,10 @@ func Connect() (db *sql.DB) {
 	if err != nil {
 		panic(err)
 	}
-	defer db.Close()
+
+	if err = db.Ping(); err != nil {
+		panic(err)
+	}
 
 	return db
 }

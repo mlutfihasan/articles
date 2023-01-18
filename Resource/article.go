@@ -28,14 +28,12 @@ func Articles(db *sql.DB) http.Handler {
 			body, err := ioutil.ReadAll(r.Body)
 			if err != nil {
 				panic(err)
-				return
 			}
 
 			var articleData Article
 			err = json.Unmarshal(body, &articleData)
 			if err != nil {
 				panic(err)
-				return
 			}
 
 			query := `INSERT INTO articles(id, author, title, body, created)
@@ -61,14 +59,12 @@ func Articles(db *sql.DB) http.Handler {
 			body, err := ioutil.ReadAll(r.Body)
 			if err != nil {
 				panic(err)
-				return
 			}
 
 			var articleData Article
 			err = json.Unmarshal(body, &articleData)
 			if err != nil {
 				panic(err)
-				return
 			}
 
 			query := `SELECT * FROM articles
