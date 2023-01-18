@@ -71,7 +71,8 @@ func Articles(db *sql.DB) http.Handler {
 			query := `SELECT * FROM articles
 						WHERE title LIKE '%` + articleData.Title + `%'
 						AND body LIKE '%` + articleData.Body + `%'
-						AND author LIKE '%` + articleData.Author + `%';`
+						AND author LIKE '%` + articleData.Author + `%'
+						ORDER BY created DESC;`
 
 			result := config.SQLToJSON(db, query)
 
