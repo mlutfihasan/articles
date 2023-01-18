@@ -3,17 +3,15 @@ package main
 import (
 	"fmt"
 
-	"github.com/mlutfihasan/articles/Auth"
-	"github.com/mlutfihasan/articles/Config"
-	"github.com/mlutfihasan/articles/Resource/General"
-
 	"net/http"
 
+	"github.com/mlutfihasan/articles/config"
+	"github.com/mlutfihasan/articles/resource"
 	"github.com/rs/cors"
 )
 
 func main() {
-	dbPuc := Config.Connect()
+	db := config.Connect()
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"},
@@ -23,9 +21,9 @@ func main() {
 		Debug:            false,
 	})
 
-	mux := new(Auth.CustomMux)
+	mux := new(http.ServeMux)
 
-	mux.Handle("/articles", General.Article(dbPuc))
+	mux.Handle("/articles", resource.Articles(db))
 
 	handler := c.Handler(mux)
 	server := new(http.Server)
