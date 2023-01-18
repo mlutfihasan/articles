@@ -53,6 +53,7 @@ func Articles(db *sql.DB) http.Handler {
 			}
 
 			json.NewEncoder(w).Encode(result)
+			return
 		}
 
 		if r.Method == "GET" {
@@ -73,7 +74,9 @@ func Articles(db *sql.DB) http.Handler {
 						AND author LIKE '%` + articleData.Author + `%';`
 
 			result := config.SQLToJSON(db, query)
+
 			json.NewEncoder(w).Encode(result)
+			return
 		}
 	})
 }
