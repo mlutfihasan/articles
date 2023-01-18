@@ -14,7 +14,7 @@ type FindResultSet struct {
 
 type UpdateResult struct {
 	Status string `json:"status"`
-	Note   string `json:"data"`
+	Note   string `json:"note"`
 }
 
 func SQLToJSON(db *sql.DB, query string) FindResultSet {
